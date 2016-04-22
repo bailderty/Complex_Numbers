@@ -5,29 +5,27 @@
 //  Created by Brett Meyer on 4/21/16.
 //  Copyright © 2016 Brett Meyer. All rights reserved.
 //
-
+#include <string>
 #include "ComplexNumber.h"
 // constructors
 ComplexNumber::ComplexNumber()
 {
-    ComplexNumber * num = new ComplexNumber();
-    num->real = 0;
-    num->imag = 0;
+    real = 0;
+    imag = 0;
 }
 
 ComplexNumber::ComplexNumber(double real_part, double imaginary_part)
 {
-    ComplexNumber * num = new ComplexNumber();
-    num->real = real_part;
-    num->imag = imaginary_part;
+    real = real_part;
+    imag = imaginary_part;
 }
 
 ComplexNumber::ComplexNumber(const ComplexNumber & rhs)
 {
-    ComplexNumber * num = new ComplexNumber();
-    num->real = rhs.real;
-    num->imag = rhs.imag;
+    real = rhs.real;
+    imag = rhs.imag;
 }
+
 // named member functions
 bool ComplexNumber::equals(const ComplexNumber & rhs) const
 {
@@ -39,14 +37,19 @@ bool ComplexNumber::equals(const ComplexNumber & rhs) const
 
 void ComplexNumber::print(ostream & out) const
 {
-    if (real < 0) {
-        out << '-';
-    }
     out << real << ' ';
-    if (imag < 0) {
-        out << "- ";
+    if (imag > 0)
+    {
+        out << "+ " << imag << "i";
     }
-    out << imag;
+    else if (imag < 0)
+    {
+        out <<"- " << imag*-1 << "i";
+    }
+    else
+    {
+        out << "+ 0i";
+    }
 }
 // assignment operators
 const ComplexNumber & ComplexNumber::operator=(const ComplexNumber & rhs)
@@ -118,14 +121,19 @@ ostream & operator<<(ostream & out, const ComplexNumber & n)
 
 istream & operator>>(istream & in, ComplexNumber & n)
 {
-    int r,i;
+    double r,i;
     char c;
+    std::string before,after;
     in >> r;
-    in.get(c);
-    in >> i;
+    in >> c;
+    in >> before;
+    //get rid of i character
+    after = before.substr(0,before.size()-1);
+    i = atof(after.c_str());
     if (c == '-') {
         i = i * -1;
     }
+    
     n = ComplexNumber(r,i);
     return in;
 }
