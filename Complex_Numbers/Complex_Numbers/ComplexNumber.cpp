@@ -77,8 +77,9 @@ const ComplexNumber & ComplexNumber::operator-=(const ComplexNumber & rhs)
 
 const ComplexNumber & ComplexNumber::operator*=(const ComplexNumber & rhs)
 {
-    real = real * rhs.real;
-    imag = imag * rhs.imag;
+    double temp = (real * rhs.real) - (imag * rhs.imag);
+    imag = (real * rhs.imag) + (imag * rhs.real);
+    real = temp;
     return *this;
 }
 // arithmetic operators

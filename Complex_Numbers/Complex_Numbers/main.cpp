@@ -18,5 +18,10 @@ int main(int argc, const char * argv[]) {
     cin >> C2;
     std::cout << "For C1 = " << C1 << " and C2 = " << C2 << " :\n";
     std::cout << "C1 + C2 = " << C1 + C2 << "\n";
+    std::cout << "C1 - C2 = " << C1 - C2 << "\n";
+    std::cout << "C1 * C2 = " << C1 * C2 << "\n";
+    
+    
+    
     return 0;
 }
