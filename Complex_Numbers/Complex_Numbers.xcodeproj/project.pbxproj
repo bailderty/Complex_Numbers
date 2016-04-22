@@ -61,8 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				7406B6A81CC95BDF00895FCA /* main.cpp */,
-				7406B6AF1CC95C0300895FCA /* ComplexNumber.cpp */,
 				7406B6B01CC95C0300895FCA /* ComplexNumber.h */,
+				7406B6AF1CC95C0300895FCA /* ComplexNumber.cpp */,
 			);
 			path = Complex_Numbers;
 			sourceTree = "<group>";
