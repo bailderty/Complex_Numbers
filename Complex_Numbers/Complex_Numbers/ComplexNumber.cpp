@@ -6,7 +6,9 @@
 //  Copyright © 2016 Brett Meyer. All rights reserved.
 //
 #include <string>
+#include <stdlib.h> //atof()
 #include "ComplexNumber.h"
+
 // constructors
 ComplexNumber::ComplexNumber()
 {
@@ -27,14 +29,6 @@ ComplexNumber::ComplexNumber(const ComplexNumber & rhs)
 }
 
 // named member functions
-bool ComplexNumber::equals(const ComplexNumber & rhs) const
-{
-    if (this->real == rhs.real && this->imag == rhs.imag) {
-        return true;
-    }
-    return false;
-}
-
 void ComplexNumber::print(ostream & out) const
 {
     out << real << ' ';
@@ -51,6 +45,15 @@ void ComplexNumber::print(ostream & out) const
         out << "+ 0i";
     }
 }
+
+bool ComplexNumber::equals(const ComplexNumber & rhs) const
+{
+    if (this->real == rhs.real && this->imag == rhs.imag) {
+        return true;
+    }
+    return false;
+}
+
 // assignment operators
 const ComplexNumber & ComplexNumber::operator=(const ComplexNumber & rhs)
 {
@@ -103,6 +106,7 @@ ComplexNumber operator*(const ComplexNumber & lhs, const ComplexNumber & rhs)
     answer *= rhs;
     return answer;
 }
+
 // relational operators
 bool operator==(const ComplexNumber & lhs, const ComplexNumber & rhs)
 {
@@ -113,6 +117,7 @@ bool operator!=(const ComplexNumber & lhs, const ComplexNumber & rhs)
 {
     return !lhs.equals(rhs);
 }
+
 // I/O operators
 ostream & operator<<(ostream & out, const ComplexNumber & n)
 {
@@ -138,10 +143,3 @@ istream & operator>>(istream & in, ComplexNumber & n)
     n = ComplexNumber(r,i);
     return in;
 }
-
-
-
-
-
-
-
